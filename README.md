@@ -11,7 +11,7 @@
 1.0版 主要操作会话和令牌
 
 ##简单配置
-请使用Nuget或其他工具安装Microsoft.Net.Http和Newtonsoft.Json包及引用
+请使用Nuget或其他工具安装Microsoft.Net.Http和Newtonsoft.Json包及引用<br \>
 ```c#
 using RTC.Net;
 Config.ApiKey = "d1383590-7f1b-4242-86ee-*******";
