@@ -34,7 +34,7 @@ Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
             获取临时会话
             var res4 = RTCSession.GetSessionsNoPermanent();
             获取一个会话
-            var res5 = RTCSession.GetSession("c8a8559d-5552-4fbd-b8d5-ddce83ab0f76");
+            var res5 = RTCSession.GetSession("c8a8559d-5552-4fbd-****-ddce83ab0f76");
             修改一个会话
             SessionResult sr = res5.Body;
             sr.label = "a123458T";
@@ -45,14 +45,14 @@ Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
 ```
 ##令牌操作
 ```c#
-            var res8 = RTCToken.GetTokens("80588ca1-b81f-4182-ad0d-6d7b7543101f");
-            var res9 = RTCToken.GetSessionsNoPermanent("80588ca1-b81f-4182-ad0d-6d7b7543101f");
-            var res10 = RTCToken.GetSessionsPermanent("80588ca1-b81f-4182-ad0d-6d7b7543101f");
+            var res8 = RTCToken.GetTokens("80588ca1-b81f-****-ad0d-6d7b7543101f");
+            var res9 = RTCToken.GetSessionsNoPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
+            var res10 = RTCToken.GetSessionsPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
             var res12 = RTCToken.CreateToken(new CreateTokenParameter()
             {
                 label = "Token23",
                 live_days = 1,
-                session_id = "80588ca1-b81f-4182-ad0d-6d7b7543101f",
+                session_id = "80588ca1-b81f-****-ad0d-6d7b7543101f",
                 type = "Pub"
             });
 ```
