@@ -14,6 +14,7 @@
 请使用Nuget或其他工具安装Microsoft.Net.Http和Newtonsoft.Json包及引用<br \>
 ```c#
 using RTC.Net;
+//项目相关参数
 Config.ApiKey = "d1383590-7f1b-4242-86ee-*******";
 Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
 ```
