@@ -1,4 +1,4 @@
-# RTC.Net V1.0
+# RTC.Net SDK V1.0
 用于操作实时猫（RealTimeCat）服务端API，官方网站：https://shishimao.com/
 基于.Net 4.0环境开发
 
