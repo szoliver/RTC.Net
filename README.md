@@ -46,9 +46,13 @@ Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
 ```
 ##令牌操作
 ```c#
+            //获取session_id下令牌列表
             var res8 = RTCToken.GetTokens("80588ca1-b81f-****-ad0d-6d7b7543101f");
+            //获取session_id下临时令牌列表
             var res9 = RTCToken.GetSessionsNoPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
+            //获取session_id下永久令牌列表
             var res10 = RTCToken.GetSessionsPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
+            //创建一个session_id下的令牌
             var res12 = RTCToken.CreateToken(new CreateTokenParameter()
             {
                 label = "Token23",
@@ -56,4 +60,12 @@ Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
                 session_id = "80588ca1-b81f-****-ad0d-6d7b7543101f",
                 type = "Pub"
             });
+            //获取一个令牌
+            var res11 = RTCToken.GetToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
+            //修改一个令牌
+            TokenResult tr = res11.Body;
+            tr.label = "xxxxxxTxxxxxxx";
+            var res13 = RTCToken.ModifyToken(tr.ToParamter());
+            //删除一个令牌
+            var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 ```
