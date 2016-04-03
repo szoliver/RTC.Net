@@ -11,8 +11,8 @@
 1.0版 主要操作会话和令牌，录像接口待完善后再添加！
 
 ##简单配置
-请使用Nuget或其他工具安装Microsoft.Net.Http和Newtonsoft.Json包及引用<br \>
-Nuget包已经发布，欢迎使用！
+请使用Nuget或其他工具安装*Microsoft.Net.Http*和*Newtonsoft.Json*包及引用<br \>
+Nuget包已经发布，欢迎使用！<br \>
 <code>
 PM>Install-Package RTC.Net
 </code>
@@ -77,9 +77,9 @@ var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 ```
 
 #关于错误返回
-1.请求返回异常的代码统一为408<br \>
+1.请求返回异常的代码统一为**408**<br \>
 2.错误详情<br \>
 如：var res1 =RTCSession.GetSessions(100);<br \>
-错误详情为res1.ReasonPhrase<br \>
-判断一个请求是否成功，可以通过res1.IsSuccessStatusCode来判断。<br \>
-想定位到准确的错误返回码，可以检查res1.Code<br \>
+错误详情为**res1.ReasonPhrase**<br \>
+判断一个请求是否成功，可以通过**res1.IsSuccessStatusCode**来判断。<br \>
+想定位到准确的错误返回码，可以检查**res1.Code**<br \>
