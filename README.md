@@ -72,9 +72,9 @@ var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 ```
 
 #关于错误返回
-1.请求返回异常的代码统一为408；
-2.错误详情
-如：var res1 =RTCSession.GetSessions(100);
-错误详情为res1.ReasonPhrase
-判断一个请求是否成功，可以通过res1.IsSuccessStatusCode来判断。
-想定位到准确的错误返回码，可以检查res1.Code
+1.请求返回异常的代码统一为408<br \>
+2.错误详情<br \>
+如：var res1 =RTCSession.GetSessions(100);<br \>
+错误详情为res1.ReasonPhrase<br \>
+判断一个请求是否成功，可以通过res1.IsSuccessStatusCode来判断。<br \>
+想定位到准确的错误返回码，可以检查res1.Code<br \>
