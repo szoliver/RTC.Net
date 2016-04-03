@@ -20,53 +20,53 @@ Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
 ```
 ##会话操作
 ```C#
-            获取会话列表
-            var res1 = RTCSession.GetSessions();
-            建立一个会话
-            var res2 = RTCSession.CreateSession(new CreateSessionParameter()
-            {
-                label = "testtestes111",
-                data = "",
-                live_days = 4,
-                permanent = false,
-                type = "P2P"
-            });
-            获取永久会话
-            var res3 = RTCSession.GetSessionsPermanent();
-            获取临时会话
-            var res4 = RTCSession.GetSessionsNoPermanent();
-            获取一个会话
-            var res5 = RTCSession.GetSession("c8a8559d-5552-4fbd-****-ddce83ab0f76");
-            修改一个会话
-            SessionResult sr = res5.Body;
-            sr.label = "a123458T";
-            sr.live_days = 2;
-            var res6 = RTCSession.ModifySession(sr.ToParamter());
-            删除一个会话
-            var res7 = RTCSession.DeleteSession(sr.uuid.ToString());
+获取会话列表
+var res1 = RTCSession.GetSessions();
+建立一个会话
+var res2 = RTCSession.CreateSession(new CreateSessionParameter()
+{
+    label = "testtestes111",
+    data = "",
+    live_days = 4,
+    permanent = false,
+    type = "P2P"
+});
+获取永久会话
+var res3 = RTCSession.GetSessionsPermanent();
+获取临时会话
+var res4 = RTCSession.GetSessionsNoPermanent();
+获取一个会话
+var res5 = RTCSession.GetSession("c8a8559d-5552-4fbd-****-ddce83ab0f76");
+修改一个会话
+SessionResult sr = res5.Body;
+sr.label = "a123458T";
+sr.live_days = 2;
+var res6 = RTCSession.ModifySession(sr.ToParamter());
+删除一个会话
+var res7 = RTCSession.DeleteSession(sr.uuid.ToString());
 ```
 ##令牌操作
 ```c#
-            //获取session_id下令牌列表
-            var res8 = RTCToken.GetTokens("80588ca1-b81f-****-ad0d-6d7b7543101f");
-            //获取session_id下临时令牌列表
-            var res9 = RTCToken.GetSessionsNoPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
-            //获取session_id下永久令牌列表
-            var res10 = RTCToken.GetSessionsPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
-            //创建一个session_id下的令牌
-            var res12 = RTCToken.CreateToken(new CreateTokenParameter()
-            {
-                label = "Token23",
-                live_days = 1,
-                session_id = "80588ca1-b81f-****-ad0d-6d7b7543101f",
-                type = "Pub"
-            });
-            //获取一个令牌
-            var res11 = RTCToken.GetToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
-            //修改一个令牌
-            TokenResult tr = res11.Body;
-            tr.label = "xxxxxxTxxxxxxx";
-            var res13 = RTCToken.ModifyToken(tr.ToParamter());
-            //删除一个令牌
-            var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
+//获取session_id下令牌列表
+var res8 = RTCToken.GetTokens("80588ca1-b81f-****-ad0d-6d7b7543101f");
+//获取session_id下临时令牌列表
+var res9 = RTCToken.GetSessionsNoPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
+//获取session_id下永久令牌列表
+var res10 = RTCToken.GetSessionsPermanent("80588ca1-b81f-****-ad0d-6d7b7543101f");
+//创建一个session_id下的令牌
+var res12 = RTCToken.CreateToken(new CreateTokenParameter()
+{
+    label = "Token23",
+    live_days = 1,
+    session_id = "80588ca1-b81f-****-ad0d-6d7b7543101f",
+    type = "Pub"
+});
+//获取一个令牌
+var res11 = RTCToken.GetToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
+//修改一个令牌
+TokenResult tr = res11.Body;
+tr.label = "xxxxxxTxxxxxxx";
+var res13 = RTCToken.ModifyToken(tr.ToParamter());
+//删除一个令牌
+var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 ```
