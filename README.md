@@ -12,6 +12,10 @@
 
 ##简单配置
 请使用Nuget或其他工具安装Microsoft.Net.Http和Newtonsoft.Json包及引用<br \>
+```cmd
+PM>Install-Package RTC.Net
+```
+
 ```c#
 using RTC.Net;
 //项目相关参数
