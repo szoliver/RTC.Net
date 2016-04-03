@@ -27,27 +27,30 @@ namespace RTC.Net
         /// <summary>
         /// 获取会话(Session)列表
         /// </summary>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetSessionsResult> GetSessions()
+        public static HttpResponse<GetSessionsResult> GetSessions(long timeout = 30)
         {
-            return Rtc.Get("/sessions").asJson<GetSessionsResult>();
+            return Rtc.Get("/sessions", timeout).asJson<GetSessionsResult>();
         }
 
         /// <summary>
         /// 获取永久会话列表
         /// </summary>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetSessionsResult> GetSessionsPermanent()
+        public static HttpResponse<GetSessionsResult> GetSessionsPermanent(long timeout = 30)
         {
-            return Rtc.Get("/sessions/permanent").asJson<GetSessionsResult>();
+            return Rtc.Get("/sessions/permanent", timeout).asJson<GetSessionsResult>();
         }
 
         /// <summary>
         /// 创建一个会话
         /// </summary>
         /// <param name="param">CreateSessionParameter对象</param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<SessionResult> CreateSession(CreateSessionParameter param)
+        public static HttpResponse<SessionResult> CreateSession(CreateSessionParameter param, long timeout = 30)
         {
             return CreateSession(param.ToParameter());
         }
@@ -56,10 +59,11 @@ namespace RTC.Net
         /// 创建一个会话
         /// </summary>
         /// <param name="param">Dictionary键值对</param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<SessionResult> CreateSession(Dictionary<string, object> param)
+        public static HttpResponse<SessionResult> CreateSession(Dictionary<string, object> param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Post("/sessions");
+            HttpRequest request = Rtc.Post("/sessions", timeout);
             foreach (var o in param)
             {
                 if (o.Value != null)
@@ -71,30 +75,33 @@ namespace RTC.Net
         /// <summary>
         /// 获取临时会话列表
         /// </summary>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetSessionsResult> GetSessionsNoPermanent()
+        public static HttpResponse<GetSessionsResult> GetSessionsNoPermanent(long timeout = 30)
         {
-            return Rtc.Get("/sessions/nonpermanent").asJson<GetSessionsResult>();
+            return Rtc.Get("/sessions/nonpermanent", timeout).asJson<GetSessionsResult>();
         }
 
         /// <summary>
         /// 获取一个会话
         /// </summary>
         /// <param name="session_id">会话Id</param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<SessionResult> GetSession(string session_id)
+        public static HttpResponse<SessionResult> GetSession(string session_id, long timeout = 30)
         {
-            return Rtc.Get("/sessions/" + session_id).asJson<SessionResult>();
+            return Rtc.Get("/sessions/" + session_id, timeout).asJson<SessionResult>();
         }
 
         /// <summary>
         /// 修改一个会话
         /// </summary>
         /// <param name="param"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<SessionResult> ModifySession(ModifySessionParameter param)
+        public static HttpResponse<SessionResult> ModifySession(ModifySessionParameter param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Patch("/sessions/" + param.session_id);
+            HttpRequest request = Rtc.Patch("/sessions/" + param.session_id, timeout);
             foreach (var o in param.ToParameter())
             {
                 if (o.Value != null)
@@ -107,10 +114,11 @@ namespace RTC.Net
         /// 删除一个会话
         /// </summary>
         /// <param name="param"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<string> DeleteSession(string session_id)
+        public static HttpResponse<string> DeleteSession(string session_id, long timeout = 30)
         {
-            return Rtc.Delete("/sessions/" + session_id).asString();
+            return Rtc.Delete("/sessions/" + session_id, timeout).asString();
         }
     }
 }

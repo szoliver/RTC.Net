@@ -17,6 +17,8 @@ namespace unirest_net.request
 
         private bool hasExplicitBody;
 
+        public TimeSpan TimeOut { get; set; }
+
         public Uri URL { get; protected set; }
 
         public HttpMethod HttpMethod { get; protected set; }
@@ -26,9 +28,11 @@ namespace unirest_net.request
         public MultipartFormDataContent Body { get; private set; }
 
         // Should add overload that takes URL object
-        public HttpRequest(HttpMethod method, string url)
+        public HttpRequest(HttpMethod method, string url, long timeout = 30)
         {
             Uri locurl;
+
+            TimeOut = new TimeSpan(timeout * TimeSpan.TicksPerSecond);
 
             if (Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out locurl))
             {
@@ -82,7 +86,7 @@ namespace unirest_net.request
             {
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
-            
+
             Body.Add(new StringContent(value), name);
 
             hasFields = true;
@@ -139,7 +143,7 @@ namespace unirest_net.request
             {
                 throw new InvalidOperationException("Can't add fields to a request with an explicit body");
             }
-            
+
             Body.Add(new FormUrlEncodedContent(parameters.Where(kv => kv.Value is String).Select(kv => new KeyValuePair<string, string>(kv.Key, kv.Value.ToString().ToLower()))));
 
             foreach (var stream in parameters.Where(kv => kv.Value is Stream).Select(kv => kv.Value))

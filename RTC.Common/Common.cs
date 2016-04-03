@@ -21,29 +21,29 @@ namespace RTC.Net
     public class Rtc
     {
         // Should add overload that takes URL object
-        public static HttpRequest Get(string url)
+        public static HttpRequest Get(string url, long timeout = 30)
         {
-            return Unirest.get(Config.ServerUrl + url).AddRTCHead();
+            return Unirest.get(Config.ServerUrl + url, timeout).AddRTCHead();
         }
 
-        public static HttpRequest Post(string url)
+        public static HttpRequest Post(string url, long timeout = 30)
         {
-            return Unirest.post(Config.ServerUrl + url).AddRTCHead();
+            return Unirest.post(Config.ServerUrl + url, timeout).AddRTCHead();
         }
 
-        public static HttpRequest Delete(string url)
+        public static HttpRequest Delete(string url, long timeout = 30)
         {
-            return Unirest.delete(Config.ServerUrl + url).AddRTCHead();
+            return Unirest.delete(Config.ServerUrl + url, timeout).AddRTCHead();
         }
 
-        public static HttpRequest Patch(string url)
+        public static HttpRequest Patch(string url, long timeout = 30)
         {
-            return Unirest.patch(Config.ServerUrl + url).AddRTCHead();
+            return Unirest.patch(Config.ServerUrl + url, timeout).AddRTCHead();
         }
 
-        public static HttpRequest Put(string url)
+        public static HttpRequest Put(string url, long timeout = 30)
         {
-            return Unirest.put(Config.ServerUrl + url).AddRTCHead();
+            return Unirest.put(Config.ServerUrl + url, timeout).AddRTCHead();
         }
     }
 

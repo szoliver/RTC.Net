@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 using unirest_net.request;
@@ -20,11 +22,19 @@ namespace unirest_net.http
                 Task.WaitAll(responseTask);
                 response = responseTask.Result;
             }
-            catch
+            catch (Exception ex)
             {
+                StringBuilder errmsg = new StringBuilder();
+                Exception exnext = ex.InnerException;
+                errmsg.Append(ex.Message);
+                while (exnext != null)
+                {
+                    errmsg.Append("->" + exnext.Message);
+                    exnext = exnext.InnerException;
+                }
                 response = new HttpResponseMessage()
                 {
-                    ReasonPhrase = "Task Cancled",
+                    ReasonPhrase = errmsg.ToString(),
                     StatusCode = HttpStatusCode.RequestTimeout,
                     RequestMessage = new HttpRequestMessage()
                     {
@@ -55,6 +65,7 @@ namespace unirest_net.http
             }
 
             var client = new HttpClient();
+            client.Timeout = request.TimeOut;
             var msg = new HttpRequestMessage(request.HttpMethod, request.URL);
 
             foreach (var header in request.Headers)

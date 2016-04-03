@@ -28,20 +28,22 @@ namespace RTC.Net
         /// 获取session_id下令牌列表
         /// </summary>
         /// <param name="session_id"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetTokenResult> GetTokens(string session_id)
+        public static HttpResponse<GetTokenResult> GetTokens(string session_id, long timeout = 30)
         {
-            return Rtc.Get("/sessions/" + session_id + "/tokens").asJson<GetTokenResult>();
+            return Rtc.Get("/sessions/" + session_id + "/tokens", timeout).asJson<GetTokenResult>();
         }
 
         /// <summary>
         /// 创建一个令牌
         /// </summary>
         /// <param name="param"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<TokenResult> CreateToken(CreateTokenParameter param)
+        public static HttpResponse<TokenResult> CreateToken(CreateTokenParameter param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Post("/sessions/" + param.session_id + "/tokens");
+            HttpRequest request = Rtc.Post("/sessions/" + param.session_id + "/tokens", timeout);
             foreach (var o in param.ToParameter())
             {
                 if (o.Value != null)
@@ -53,39 +55,43 @@ namespace RTC.Net
         /// <summary>
         /// 获取session_id下永久令牌列表
         /// </summary>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetTokenResult> GetSessionsPermanent(string session_id)
+        public static HttpResponse<GetTokenResult> GetSessionsPermanent(string session_id, long timeout = 30)
         {
-            return Rtc.Get("/sessions/" + session_id + "/tokens/permanent").asJson<GetTokenResult>();
+            return Rtc.Get("/sessions/" + session_id + "/tokens/permanent", timeout).asJson<GetTokenResult>();
         }
 
         /// <summary>
         /// 获取session_id下临时令牌列表
         /// </summary>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetTokenResult> GetSessionsNoPermanent(string session_id)
+        public static HttpResponse<GetTokenResult> GetSessionsNoPermanent(string session_id, long timeout = 30)
         {
-            return Rtc.Get("/sessions/" + session_id + "/tokens/nonpermanent").asJson<GetTokenResult>();
+            return Rtc.Get("/sessions/" + session_id + "/tokens/nonpermanent", timeout).asJson<GetTokenResult>();
         }
 
         /// <summary>
         /// 获取一个令牌
         /// </summary>
         /// <param name="token_id"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<TokenResult> GetToken(string token_id)
+        public static HttpResponse<TokenResult> GetToken(string token_id, long timeout = 30)
         {
-            return Rtc.Get("/tokens/" + token_id).asJson<TokenResult>();
+            return Rtc.Get("/tokens/" + token_id, timeout).asJson<TokenResult>();
         }
 
         /// <summary>
         /// 修改一个令牌
         /// </summary>
         /// <param name="param"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<TokenResult> ModifyToken(ModifyTokenParameter param)
+        public static HttpResponse<TokenResult> ModifyToken(ModifyTokenParameter param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Patch("/tokens/" + param.token_id);
+            HttpRequest request = Rtc.Patch("/tokens/" + param.token_id, timeout);
             foreach (var o in param.ToParameter())
             {
                 if (o.Value != null)
@@ -98,10 +104,11 @@ namespace RTC.Net
         /// 删除一个令牌
         /// </summary>
         /// <param name="token_id"></param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<string> DeleteToken(string token_id)
+        public static HttpResponse<string> DeleteToken(string token_id, long timeout = 30)
         {
-            return Rtc.Delete("/tokens/" + token_id).asString();
+            return Rtc.Delete("/tokens/" + token_id, timeout).asString();
         }
     }
 }
