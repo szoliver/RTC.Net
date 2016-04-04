@@ -41,16 +41,6 @@ namespace RTC.Net
         /// 存活时间,单位为天,超过时间则会话过期,默认为30天，对于令牌默认为15天
         /// </summary>
         public int live_days { get; set; }
-
-        public virtual Dictionary<string, object> ToParameter()
-        {
-            Dictionary<string, object> ret = new Dictionary<string, object>();
-            ret.Add("label", label);
-            ret.Add("permanent", permanent.ToString().ToLower());
-            ret.Add("data", data);
-            ret.Add("live_days", live_days);
-            return ret;
-        }
     }
 
     /// <summary>
@@ -61,32 +51,18 @@ namespace RTC.Net
         /// <summary>
         /// 类型,仅可以为p2p或rel
         /// </summary>
-        public string type { get; set; }
-
-        public override Dictionary<string, object> ToParameter()
-        {
-            Dictionary<string, object> ret = base.ToParameter();
-            ret.Add("type", type.ToLower());
-            return ret;
-        }
+        public SessionType type { get; set; }
     }
 
     /// <summary>
     /// 修改会话参数
     /// </summary>
-    public class ModifySessionParameter : BaseParameter
+    public class UpdateSessionParameter : BaseParameter
     {
         /// <summary>
         /// 会话Id
         /// </summary>
         public string session_id { get; set; }
-
-        public override Dictionary<string, object> ToParameter()
-        {
-            Dictionary<string, object> ret = base.ToParameter();
-            ret.Add("session_id", session_id);
-            return ret;
-        }
     }
 
     public class CreateTokenParameter : BaseParameter
@@ -98,29 +74,27 @@ namespace RTC.Net
         /// <summary>
         /// 类型,仅可以为pub(发布者)或sub(接收者)
         /// </summary>
-        public string type { get; set; }
+        public TokenType type { get; set; }
         /// <summary>
         /// 个数，一次可创建多个令牌，最多为10，留空则创建一个
         /// </summary>
         public string number { set; get; }
-        public override Dictionary<string, object> ToParameter()
-        {
-            Dictionary<string, object> ret = base.ToParameter();
-            ret.Add("session_id", session_id);
-            ret.Add("type", type.ToLower());
-            ret.Add("number", number);
-            return ret;
-        }
     }
 
-    public class ModifyTokenParameter : BaseParameter
+    public class UpdateTokenParameter : BaseParameter
     {
         public string token_id { get; set; }
-        public override Dictionary<string, object> ToParameter()
-        {
-            Dictionary<string, object> ret = base.ToParameter();
-            ret.Add("token_id", token_id);
-            return ret;
-        }
     }
+
+    public class ProcessRecordParam
+    {
+        public string token { get; set; }
+        public string channel { get; set; }
+        public RecordAction action { get; set; }
+        public VideoType type { get; set; }
+        public string label { get; set; }
+    }
+
+
+
 }

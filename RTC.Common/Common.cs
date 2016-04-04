@@ -13,6 +13,8 @@
 * 备注描述：
 *******************************************************/
 #endregion
+using System.Collections.Generic;
+using System.Reflection;
 using unirest_net.http;
 using unirest_net.request;
 
@@ -54,6 +56,65 @@ namespace RTC.Net
             return t.header(Config.ApiKeyName, Config.ApiKey)
                 .header(Config.ApiSecretName, Config.ApiSecret);
         }
+
+        public static Dictionary<string, object> ToParameter<T>(this T t)
+            where T : class, new()
+        {
+            Dictionary<string, object> ret = new Dictionary<string, object>();
+            PropertyInfo[] pi = t.GetType().GetProperties();
+            foreach (var o in pi)
+            {
+                object ov = o.GetValue(t, null);
+                string ovs = ov.ToString();
+                if (ov.GetType().IsEnum|| ov.GetType() == typeof(bool))
+                    ovs = ovs.ToLower();
+                ret.Add(o.Name, ovs);
+            }
+            return ret;
+        }
+
+        public static HttpRequest AddRangeField(this HttpRequest request, Dictionary<string, object> value)
+        {
+            foreach (var o in value)
+            {
+                if (o.Value != null)
+                    request.field(o.Key, o.Value.ToString());
+            }
+            return request;
+        }
     }
 
+    public enum SessionType
+    {
+        P2P = 1,
+        REL = 2
+    }
+
+    public enum TokenType
+    {
+        /// <summary>
+        /// 发布者
+        /// </summary>
+        PUB = 1,
+        /// <summary>
+        /// 接收者
+        /// </summary>
+        SUB = 2
+    }
+
+    public enum VideoType
+    {
+        MP4,
+        WEBM
+    }
+    public enum RecordAction
+    {
+        START,
+        STOP
+    }
+    public enum RecordStatus
+    {
+        RECORDING,
+        DONE
+    }
 }

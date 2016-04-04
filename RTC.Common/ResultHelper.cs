@@ -40,6 +40,30 @@ namespace RTC.Net
     }
     #endregion
 
+    #region 录像相关定义
+    public class GetRecordsResult:GetBaseResult
+    {
+        public List<RecordResult> results { set; get; }
+    }
+
+    public class RecordResult:BaseResult
+    {
+        public DateTime video_start { get; set; }
+        public DateTime video_stop { get; set; }
+        public int video_length { get; set; }
+        public VideoType video_type { get; set; }
+        public DateTime time_start { get; set; }
+        public string project { get; set; }
+        public string session { get; set; }
+        public string token { get; set; }
+        public string channel { get; set; }
+        public RecordAction action { set; get; }
+        public RecordStatus status { set; get; }
+        public string url { get; set; }
+    }
+
+    #endregion
+
     #region 会话相关定义
     public class GetSessionsResult : GetBaseResult
     {
@@ -51,9 +75,9 @@ namespace RTC.Net
         public string type { get; set; }
         public int live_days { get; set; }
 
-        public ModifySessionParameter ToParamter()
+        public UpdateSessionParameter ToParamter()
         {
-            return new ModifySessionParameter()
+            return new UpdateSessionParameter()
             {
                 data = data,
                 label = label,
@@ -68,17 +92,18 @@ namespace RTC.Net
     #region 令牌相关定义
     public class GetTokenResult : GetBaseResult
     {
-        public List<SessionResult> results { set; get; }
+        public List<TokenResult> results { set; get; }
     }
 
     public class TokenResult : BaseResult
     {
-        public string type { get; set; }
+        public TokenType type { get; set; }
         public int live_days { get; set; }
         public string session_id { get; set; }
-        public ModifyTokenParameter ToParamter()
+        
+        public UpdateTokenParameter ToParamter()
         {
-            return new ModifyTokenParameter()
+            return new UpdateTokenParameter()
             {
                 data = data,
                 label = label,

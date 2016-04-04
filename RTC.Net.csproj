@@ -78,6 +78,7 @@
     <Compile Include="RTC.Common\ParameterHelper.cs" />
     <Compile Include="RTC.Common\ResultHelper.cs" />
     <Compile Include="RTC.Config.cs" />
+    <Compile Include="RTC.Record\RtcRecord.cs" />
     <Compile Include="RTC.Session\RtcSession.cs" />
     <Compile Include="RTC.Token\RtcToken.cs" />
     <Compile Include="Unirest-Net\http\HttpClientHelper.cs" />

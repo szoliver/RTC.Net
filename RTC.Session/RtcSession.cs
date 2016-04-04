@@ -52,24 +52,9 @@ namespace RTC.Net
         /// <returns></returns>
         public static HttpResponse<SessionResult> CreateSession(CreateSessionParameter param, long timeout = 30)
         {
-            return CreateSession(param.ToParameter());
-        }
-
-        /// <summary>
-        /// 创建一个会话
-        /// </summary>
-        /// <param name="param">Dictionary键值对</param>
-        /// <param name="timeout">请求超时时间，单位秒</param>
-        /// <returns></returns>
-        public static HttpResponse<SessionResult> CreateSession(Dictionary<string, object> param, long timeout = 30)
-        {
-            HttpRequest request = Rtc.Post("/sessions", timeout);
-            foreach (var o in param)
-            {
-                if (o.Value != null)
-                    request.field(o.Key, o.Value.ToString());
-            }
-            return request.asJson<SessionResult>();
+            return Rtc.Post("/sessions", timeout)
+                .AddRangeField(param.ToParameter())
+                .asJson<SessionResult>();
         }
 
         /// <summary>
@@ -99,15 +84,11 @@ namespace RTC.Net
         /// <param name="param"></param>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<SessionResult> ModifySession(ModifySessionParameter param, long timeout = 30)
+        public static HttpResponse<SessionResult> UpdateSession(UpdateSessionParameter param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Patch("/sessions/" + param.session_id, timeout);
-            foreach (var o in param.ToParameter())
-            {
-                if (o.Value != null)
-                    request.field(o.Key, o.Value.ToString());
-            }
-            return request.asJson<SessionResult>();
+            return Rtc.Patch("/sessions/" + param.session_id, timeout)
+                .AddRangeField(param.ToParameter())
+                .asJson<SessionResult>();
         }
 
         /// <summary>

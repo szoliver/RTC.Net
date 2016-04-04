@@ -43,13 +43,9 @@ namespace RTC.Net
         /// <returns></returns>
         public static HttpResponse<TokenResult> CreateToken(CreateTokenParameter param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Post("/sessions/" + param.session_id + "/tokens", timeout);
-            foreach (var o in param.ToParameter())
-            {
-                if (o.Value != null)
-                    request.field(o.Key, o.Value.ToString());
-            }
-            return request.asJson<TokenResult>();
+            return Rtc.Post("/sessions/" + param.session_id + "/tokens", timeout)
+                .AddRangeField(param.ToParameter())
+                .asJson<TokenResult>();
         }
 
         /// <summary>
@@ -89,15 +85,11 @@ namespace RTC.Net
         /// <param name="param"></param>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<TokenResult> ModifyToken(ModifyTokenParameter param, long timeout = 30)
+        public static HttpResponse<TokenResult> UpdateToken(UpdateTokenParameter param, long timeout = 30)
         {
-            HttpRequest request = Rtc.Patch("/tokens/" + param.token_id, timeout);
-            foreach (var o in param.ToParameter())
-            {
-                if (o.Value != null)
-                    request.field(o.Key, o.Value.ToString());
-            }
-            return request.asJson<TokenResult>();
+            return Rtc.Patch("/tokens/" + param.token_id, timeout)
+                .AddRangeField(param.ToParameter())
+                .asJson<TokenResult>();
         }
 
         /// <summary>
