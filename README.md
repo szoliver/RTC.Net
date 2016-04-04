@@ -8,7 +8,6 @@
 此SDK基于.Net 4.0环境开发
 
 #SDK开发示例
-1.0版 主要操作会话和令牌，录像接口待完善后再添加！
 
 ##简单配置
 请使用Nuget或其他工具安装`Microsoft.Net.Http`和`Newtonsoft.Json`包及引用<br \>
@@ -46,7 +45,7 @@ var res5 = RTCSession.GetSession("c8a8559d-5552-4fbd-****-ddce83ab0f76");
 SessionResult sr = res5.Body;
 sr.label = "a123458T";
 sr.live_days = 2;
-var res6 = RTCSession.ModifySession(sr.ToParamter());
+var res6 = RTCSession.UpdateSession(sr.ToParamter());
 删除一个会话
 var res7 = RTCSession.DeleteSession(sr.uuid.ToString());
 ```
@@ -71,7 +70,7 @@ var res11 = RTCToken.GetToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 //修改一个令牌
 TokenResult tr = res11.Body;
 tr.label = "xxxxxxTxxxxxxx";
-var res13 = RTCToken.ModifyToken(tr.ToParamter());
+var res13 = RTCToken.UpdateToken(tr.ToParamter());
 //删除一个令牌
 var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 ```
