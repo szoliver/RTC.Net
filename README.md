@@ -64,7 +64,7 @@ var res12 = RTCToken.CreateToken(new CreateTokenParameter()
     label = "Token23",
     live_days = 1,
     session_id = "80588ca1-b81f-****-ad0d-6d7b7543101f",
-    type = TokenType.PUB"
+    type = TokenType.PUB
 });
 //获取一个令牌
 var res11 = RTCToken.GetToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
