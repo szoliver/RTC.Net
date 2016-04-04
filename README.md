@@ -34,7 +34,7 @@ var res2 = RTCSession.CreateSession(new CreateSessionParameter()
     data = "",
     live_days = 4,
     permanent = false,
-    type = "P2P"
+    type = SessionType.P2P
 });
 获取永久会话
 var res3 = RTCSession.GetSessionsPermanent();
@@ -64,7 +64,7 @@ var res12 = RTCToken.CreateToken(new CreateTokenParameter()
     label = "Token23",
     live_days = 1,
     session_id = "80588ca1-b81f-****-ad0d-6d7b7543101f",
-    type = "Pub"
+    type = TokenType.PUB"
 });
 //获取一个令牌
 var res11 = RTCToken.GetToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
@@ -92,7 +92,9 @@ var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 4.修复一些比较隐蔽的BUG；<br \>
 
 ##1.0.2
-优化错误显示；增加Http请求超时设置参数
+1.优化错误显示；<br \>
+2.增加Http请求超时设置参数<br \>
 
 ##1.0 
-基础版本上传,主要操作会话和令牌，录像接口待服务端API完善后再添加！
+1.基础版本上传,主要操作会话和令牌;<br \>
+2.录像接口待服务端API完善后再添加！
