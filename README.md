@@ -1,5 +1,5 @@
-# RTC.Net SDK V1.1.0 
-###Update:2016-4-4 22:20:12
+# RTC.Net SDK V1.1.5 
+###Update:2016-4-5 22:04
 用于操作实时猫（`RealTimeCat`）服务端API，官方网站：https://shishimao.com/
 <hr \>
 专注于WebRTC技术的实时音视频云服务平台<br \>
@@ -26,7 +26,7 @@ Config.ApiSecret = "579d679f-84b8-4125-bc34-********";
 ##会话操作
 ```C#
 获取会话列表
-var res1 = RTCSession.GetSessions();
+var res1 = RTCSession.GetSessions(1,25,30);
 建立一个会话
 var res2 = RTCSession.CreateSession(new CreateSessionParameter()
 {
@@ -79,12 +79,15 @@ var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 #关于错误返回
 1.请求返回异常的代码统一为`408`<br \>
 2.错误详情<br \>
-如：var res1 =RTCSession.GetSessions(100);<br \>
+如：var res1 =RTCSession.GetSessions();<br \>
 错误详情为`res1.ReasonPhrase`<br \>
 判断一个请求是否成功，可以通过`res1.IsSuccessStatusCode`来判断。<br \>
 想定位到准确的错误返回码，可以检查`res1.Code`<br \>
 
 #changelog
+##1.1.5
+1.服务端API接口增加分页功能
+
 ##1.1.0
 1.类型、方式等常量采用枚举类型；<br \>
 2.增加几个类的扩展方法以优化代码结构；<br \>

@@ -37,16 +37,18 @@ namespace RTC.Net
         public int count { get; set; }
         public string next { get; set; }
         public string previous { get; set; }
+        public int page { get; set; }
+        public int page_size { get; set; }
     }
     #endregion
 
     #region 录像相关定义
-    public class GetRecordsResult:GetBaseResult
+    public class GetRecordsResult : GetBaseResult
     {
         public List<RecordResult> results { set; get; }
     }
 
-    public class RecordResult:BaseResult
+    public class RecordResult : BaseResult
     {
         public DateTime video_start { get; set; }
         public DateTime video_stop { get; set; }
@@ -100,7 +102,7 @@ namespace RTC.Net
         public TokenType type { get; set; }
         public int live_days { get; set; }
         public string session_id { get; set; }
-        
+
         public UpdateTokenParameter ToParamter()
         {
             return new UpdateTokenParameter()

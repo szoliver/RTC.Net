@@ -29,9 +29,9 @@ namespace RTC.Net
         /// </summary>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetSessionsResult> GetSessions(long timeout = 30)
+        public static HttpResponse<GetSessionsResult> GetSessions(int page = 1, int page_size = 25, long timeout = 30)
         {
-            return Rtc.Get("/sessions", timeout).asJson<GetSessionsResult>();
+            return Rtc.Get("/sessions?page=" + page + "&page_size=" + page_size, timeout).asJson<GetSessionsResult>();
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace RTC.Net
         /// </summary>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetSessionsResult> GetSessionsPermanent(long timeout = 30)
+        public static HttpResponse<GetSessionsResult> GetSessionsPermanent(int page = 1, int page_size = 25, long timeout = 30)
         {
-            return Rtc.Get("/sessions/permanent", timeout).asJson<GetSessionsResult>();
+            return Rtc.Get("/sessions/permanent?page=" + page + "&page_size=" + page_size, timeout).asJson<GetSessionsResult>();
         }
 
         /// <summary>
@@ -62,9 +62,9 @@ namespace RTC.Net
         /// </summary>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetSessionsResult> GetSessionsNoPermanent(long timeout = 30)
+        public static HttpResponse<GetSessionsResult> GetSessionsNoPermanent(int page = 1, int page_size = 25, long timeout = 30)
         {
-            return Rtc.Get("/sessions/nonpermanent", timeout).asJson<GetSessionsResult>();
+            return Rtc.Get("/sessions/nonpermanent?page=" + page + "&page_size=" + page_size, timeout).asJson<GetSessionsResult>();
         }
 
         /// <summary>

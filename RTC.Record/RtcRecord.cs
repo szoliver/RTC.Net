@@ -29,9 +29,9 @@ namespace RTC.Net
         /// </summary>
         /// <param name="timeout"></param>
         /// <returns></returns>
-        public HttpResponse<GetRecordsResult> GetRecords(long timeout = 30)
+        public HttpResponse<GetRecordsResult> GetRecords(int page = 1, int page_size = 25, long timeout = 30)
         {
-            return Rtc.Get("/records", timeout).asJson<GetRecordsResult>();
+            return Rtc.Get("/records?page=" + page + "&page_size=" + page_size, timeout).asJson<GetRecordsResult>();
         }
 
         /// <summary>
@@ -56,6 +56,13 @@ namespace RTC.Net
             return Rtc.Get("/records/" + record_id, timeout).asJson<RecordResult>();
         }
 
+        /// <summary>
+        /// 更新一个录像记录
+        /// </summary>
+        /// <param name="record_id"></param>
+        /// <param name="label"></param>
+        /// <param name="timeout"></param>
+        /// <returns></returns>
         public HttpResponse<RecordResult> UpdateRecord(string record_id, string label, long timeout = 30)
         {
             return Rtc.Patch("/records/" + record_id, timeout).field("label", label).asJson<RecordResult>();
