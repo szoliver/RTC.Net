@@ -53,7 +53,7 @@ namespace RTC.Net
         /// </summary>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetTokenResult> GetSessionsPermanent(string session_id, int page = 1, int page_size = 25, long timeout = 30)
+        public static HttpResponse<GetTokenResult> GetTokensPermanent(string session_id, int page = 1, int page_size = 25, long timeout = 30)
         {
             return Rtc.Get("/sessions/" + session_id + "/tokens/permanent?page=" + page + "&page_size=" + page_size, timeout).asJson<GetTokenResult>();
         }
@@ -63,7 +63,7 @@ namespace RTC.Net
         /// </summary>
         /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns></returns>
-        public static HttpResponse<GetTokenResult> GetSessionsNoPermanent(string session_id, int page = 1, int page_size = 25, long timeout = 30)
+        public static HttpResponse<GetTokenResult> GetTokensNoPermanent(string session_id, int page = 1, int page_size = 25, long timeout = 30)
         {
             return Rtc.Get("/sessions/" + session_id + "/tokens/nonpermanent?page=" + page + "&page_size=" + page_size, timeout).asJson<GetTokenResult>();
         }

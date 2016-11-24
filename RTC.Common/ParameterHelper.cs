@@ -43,6 +43,18 @@ namespace RTC.Net
         public int live_days { get; set; }
     }
 
+    public class ProjectParameter
+    {
+        /// <summary>
+        /// 项目名,长度为50,默认为空
+        /// </summary>
+        public string name { get; set; }
+        /// <summary>
+        /// 项目描述,长度为1024,默认为空
+        /// </summary>
+        public string memo { get; set; }
+    }
+
     /// <summary>
     /// 创建会话参数
     /// </summary>

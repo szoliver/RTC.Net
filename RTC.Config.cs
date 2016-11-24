@@ -20,7 +20,7 @@ namespace RTC.Net
         /// <summary>
         /// RTC版本号
         /// </summary>
-        public static string Version = "0.3";
+        public static string Version = "0.4";
         /// <summary>
         /// 服务器API调用根地址
         /// </summary>

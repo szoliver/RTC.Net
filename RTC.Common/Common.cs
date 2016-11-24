@@ -57,6 +57,12 @@ namespace RTC.Net
                 .header(Config.ApiSecretName, Config.ApiSecret);
         }
 
+        /// <summary>
+        /// 对象转换成字典数据以便于发起POST请求
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public static Dictionary<string, object> ToParameter<T>(this T t)
             where T : class, new()
         {

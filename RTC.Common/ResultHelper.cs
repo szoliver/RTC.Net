@@ -19,6 +19,22 @@ using System.Collections.Generic;
 namespace RTC.Net
 {
     #region 基类定义
+    public class ProjectItem
+    {
+        public string uuid { get; set; }  //项目主键Id
+        public string user_id { get; set; }  //所有者主键Id
+        public string name { get; set; }  //项目名"
+        public string memo { get; set; }  //项目描述
+        public bool enable { get; set; }  //是否启用
+        public bool enable_relay { get; set; }  //是否开启rel模式
+        public string api_key { get; set; }  //API Key
+        public string secret { get; set; }  //API Secret
+        public string time_created { get; set; }  //创建时间
+    }
+
+    /// <summary>
+    /// 会话实体基础属性定义
+    /// </summary>
     public class BaseResult
     {
         public string error { get; set; }
@@ -69,9 +85,15 @@ namespace RTC.Net
     #region 会话相关定义
     public class GetSessionsResult : GetBaseResult
     {
+        /// <summary>
+        /// 会话实体结果列表
+        /// </summary>
         public List<SessionResult> results { set; get; }
     }
 
+    /// <summary>
+    /// 会话记录实体
+    /// </summary>
     public class SessionResult : BaseResult
     {
         public string type { get; set; }
