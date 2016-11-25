@@ -87,6 +87,10 @@ var res14 = RTCToken.DeleteToken("8604b20d-9e24-4804-ad87-c8230390c7ba");
 想定位到准确的错误返回码，可以检查`res1.Code`<br \>
 
 #changelog
+##1.2
+1.升级至0.4版接口
+2.增加 Project类接口
+
 ##1.1.5
 1.服务端API接口增加分页功能
 
